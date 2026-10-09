@@ -1,0 +1,35 @@
+---
+name: segment_duplications
+enabled: True
+description: segment duplications from dbVar
+runner_type: python-script
+entry_point: segment_duplications.py
+parameters:
+  url:
+    type: string
+    description: Link to the SDs at dbVar, information seen at https://ftp.ncbi.nlm.nih.gov/pub/dbVar/sandbox/annotation/GRCh38/README
+    default: "https://ftp.ncbi.nlm.nih.gov/pub/dbVar/sandbox/annotation/GRCh38/genomicSuperDup.gff3.gz"
+    position: 0
+  outputfolder:
+    type: string
+    description: Path 
+    default: "{{ config_context.outputfolderannotationtracks }}"
+    immutable: True
+    position: 1
+  columns:
+    type: array
+    description: List of columns in the dataframe
+    default: ["chromosome","col2","col3","start","end","col6","col7","col8","info"]
+    immutable: True
+    position: 2
+  attributes:
+    type: array
+    description: List of attributes
+    default: ["score","alignL","indelN","indelS","alignB","matchB","mismatchB","transitionsB","transversionsB","fracMatch","fracMatchIndel","jcK","k2K"]
+    position: 3
+  filename:
+    type: string
+    description: Path 
+    default: "segmental_duplications.tsv"
+    immutable: True
+    position: 4

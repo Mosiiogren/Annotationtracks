@@ -80,6 +80,22 @@ tasks:
         publish:
           - annotationtracks: <% ctx().annotationtracks + result().result %>
         do:
+          - segment_duplication
+      - when: "{{ failed() }}"
+        publish:
+          - msg: <% result().get(ctx().hosts).stderr %>
+        do:
+          - report_failure
+  
+  segment_duplication:
+    action: annotationtracks.segment_duplications
+    input:
+      timeout: 1000
+    next:
+      - when: "{{ succeeded() }}"
+        publish:
+          - annotationtracks: <% ctx().annotationtracks + result().result %>
+        do:
           - upload_into_gens
       - when: "{{ failed() }}"
         publish:
