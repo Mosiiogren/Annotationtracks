@@ -168,7 +168,7 @@ class DiseaseRelatedSVs(Action):
         df = df.astype(str)
 
         df["comments"] = (
-            "Data retrieved from SV4GD"
+            "Data retrieved from SV4GD, see more at: https://bio-computing.hrbmu.edu.cn/SV4GD/download"
             + ";"
             + "Variant: "
             + df["Type"]

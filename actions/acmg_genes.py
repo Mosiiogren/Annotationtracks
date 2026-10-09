@@ -11,7 +11,7 @@ from pathlib import Path
 from st2common.runners.base_action import Action
 
 
-class ClinicalSignificance(Action):
+class AcmgGenes(Action):
 
     def run(
         self,
@@ -27,7 +27,7 @@ class ClinicalSignificance(Action):
             return (False, results)
 
         finaldf = self.filter_data(results)
-        finaldf = self.add_comments(finaldf, attributes)
+        finaldf = self.add_comments(finaldf)
         filename = self.create_annotationtrack_files(finaldf, outputfolder, filename)
 
         return (True, filename)
@@ -112,7 +112,7 @@ class ClinicalSignificance(Action):
 
         return df
 
-    def add_comments(self, df: pd.DataFrame, attributes: list) -> pd.DataFrame:
+    def add_comments(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         Function for adding a column consisting of comments
         Comments are visually separate in Gens by ;
@@ -120,7 +120,7 @@ class ClinicalSignificance(Action):
         df = df.astype(str)
 
         df["comments"] = (
-            "Data retrieved from dbVar"
+            "Data retrieved from dbVar, see more at: https://ftp.ncbi.nlm.nih.gov/pub/dbVar/sandbox/annotation/GRCh38/README"
             + ";"
             + "Gene Name: "
             + df["gene"]

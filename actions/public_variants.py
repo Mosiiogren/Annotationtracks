@@ -4,7 +4,6 @@ import datetime
 import time
 
 import pandas as pd
-from pathlib import Path
 from gzip import decompress
 
 from st2common.runners.base_action import Action
@@ -103,7 +102,7 @@ class PublicStructuralVariantsData(Action):
         df = df.astype(str)
 
         df["comments"] = (
-            "dbVar CNV's for pathogenic/common variants in ClinVar"
+            "Data retrievede from dbVar, see more at: https://ftp.ncbi.nlm.nih.gov/pub/dbVar/sandbox/annotation/GRCh38/README"
             + ";"
             + "SV TYPE: "
             + df["Name"]

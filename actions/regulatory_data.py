@@ -129,7 +129,7 @@ class RegulatoryData(Action):
         df = df.astype(str)
 
         df["comments"] = (
-            "Ensembl"
+            "Data retrieved from ENSEMBL, see more at: https://ftp.ensembl.org/pub/release-116/regulation/README.md"
             + ";"
             + "Regulatory element: "
             + df["Type"]

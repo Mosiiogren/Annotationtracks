@@ -283,7 +283,7 @@ class GeneData(Action):
         df = df.astype(str)
 
         df["comments"] = (
-            "Ensembl"
+            "Data retrieved from NCBI, see more at: https://ftp.ensembl.org/pub/release-115/gtf/homo_sapiens/README and  https://ftp.ncbi.nlm.nih.gov/refseq/MANE/MANE_human/release_1.4/README.txt"
             + ";"
             + "Gene ID: "
             + df["gene_id"]

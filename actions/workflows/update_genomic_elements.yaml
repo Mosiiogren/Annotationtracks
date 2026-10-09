@@ -14,7 +14,7 @@ input:
 
 vars:
  - msg:
- - annnotationtracks:
+ - annotationtracks:
 
 
 tasks:
@@ -25,7 +25,7 @@ tasks:
     next:
       - when: "{{ succeeded() }}"
         publish:
-          - annnotationtracks: <% result().result %>
+          - annotationtracks: <% result().result %>
         do:
           - get_gene_data
       - when: "{{ failed() }}"
@@ -42,7 +42,7 @@ tasks:
     next:
       - when: "{{ succeeded() }}"
         publish:
-          - annnotationtracks: <% ctx().annnotationtracks + result().result %>
+          - annotationtracks: <% ctx().annotationtracks + result().result %>
         do:
           - upload_into_gens
       - when: "{{ failed() }}"
@@ -54,7 +54,7 @@ tasks:
   upload_into_gens:
     action: annotationtracks.upload_tracks_to_gens
     input:
-      annnotationtracks: <% ctx().annnotationtracks %>
+      annotationtracks: <% ctx().annotationtracks %>
       timeout: 10000
     next:
       - when: "{{ succeeded() }}"

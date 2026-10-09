@@ -50,7 +50,7 @@ class ClinicalSignificance(Action):
 
             time.sleep(5)
 
-        finaldf = self.add_comments(finaldf, attributes)
+        finaldf = self.add_comments(finaldf)
         finaldf = self.add_color(finaldf)
         filenames = self.create_annotationtrack_files(finaldf, outputfolder, filename)
 
@@ -139,7 +139,7 @@ class ClinicalSignificance(Action):
 
         return df
 
-    def add_comments(self, df: pd.DataFrame, attributes: list) -> pd.DataFrame:
+    def add_comments(self, df: pd.DataFrame) -> pd.DataFrame:
         """
         Function for adding a column consisting of comments
         Comments are visually separate in Gens by ;
@@ -150,6 +150,7 @@ class ClinicalSignificance(Action):
         df["comments"] = (
             "Data retrieved from "
             + df["source"]
+            + ", see more at: https://ftp.ncbi.nlm.nih.gov/pub/dbVar/data/README.txt"
             + ";"
             + "Clinical significance: "
             + df["clinical_int"]

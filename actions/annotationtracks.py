@@ -71,7 +71,9 @@ class Annotationtracks(Action):
         df = df.astype(str)
         df["comments"] = np.where(
             (df["intrachromosomal"] == "True"),
-            "SVs included in the cluster: "
+            "Data retrieved from Local Database at Klinisk Genetik"
+            + ";"
+            + "SVs included in the cluster: "
             + df["score"].astype(str)
             + ";"
             + "SV type: "
@@ -88,7 +90,9 @@ class Annotationtracks(Action):
             + ";"
             + "Track created at: "
             + datetime.datetime.now().strftime("%c"),
-            "SVs included in the cluster: "
+            "Data retrieved from Local Database at Klinisk Genetik"
+            + ";"
+            + "SVs included in the cluster: "
             + df["score"].astype(str)
             + ";"
             + "SV type: "
